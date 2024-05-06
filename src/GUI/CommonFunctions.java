@@ -40,6 +40,7 @@ public class CommonFunctions extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,6 +107,13 @@ public class CommonFunctions extends javax.swing.JFrame {
             }
         });
 
+        jButton10.setText("Database Sub Query Search 3");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -128,7 +136,8 @@ public class CommonFunctions extends javax.swing.JFrame {
                             .addComponent(jButton7)
                             .addComponent(jButton6)
                             .addComponent(jButton4)))
-                    .addComponent(jButton9))
+                    .addComponent(jButton9)
+                    .addComponent(jButton10))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -150,7 +159,9 @@ public class CommonFunctions extends javax.swing.JFrame {
                     .addComponent(jButton8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton9)
-                .addContainerGap(240, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton10)
+                .addContainerGap(203, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -225,7 +236,6 @@ public class CommonFunctions extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -250,8 +260,6 @@ public class CommonFunctions extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -269,6 +277,7 @@ public class CommonFunctions extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         //GOOD PRACTICE
+        //sub queries
         try {
             ResultSet resultset = MySQL.search("SELECT * FROM `user` WHERE `user_type_id`=(SELECT `id` FROM `user_type` WHERE `type`='Admin')");
             while (resultset.next()) {
@@ -279,6 +288,18 @@ public class CommonFunctions extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        try {
+            ResultSet resultset = MySQL.search("SELECT * FROM `user` WHERE `user_type_id` IN (SELECT `id` FROM `user_type` WHERE `type` = 'User' OR `type`='Cashier')");
+            while (resultset.next()) {
+                String fname=resultset.getString("fname");
+                System.out.println(fname);               
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -294,6 +315,7 @@ public class CommonFunctions extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
