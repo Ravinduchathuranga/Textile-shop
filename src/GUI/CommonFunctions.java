@@ -37,6 +37,8 @@ public class CommonFunctions extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,10 +77,24 @@ public class CommonFunctions extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("Database Search  Multiple Rows");
+        jButton6.setText("Database Search  Single Row");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setText("Database Search Multiple Rows");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jButton8.setText("Database Sub Query Search");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
             }
         });
 
@@ -95,12 +111,14 @@ public class CommonFunctions extends javax.swing.JFrame {
                         .addComponent(jButton2)
                         .addGap(28, 28, 28)
                         .addComponent(jButton3))
-                    .addComponent(jButton5))
+                    .addComponent(jButton5)
+                    .addComponent(jButton8))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton7)
                     .addComponent(jButton6)
                     .addComponent(jButton4))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,7 +133,11 @@ public class CommonFunctions extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
                     .addComponent(jButton6))
-                .addContainerGap(320, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton7)
+                    .addComponent(jButton8))
+                .addContainerGap(277, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -184,7 +206,7 @@ public class CommonFunctions extends javax.swing.JFrame {
             if (resultset.next()) {
                 String fname = resultset.getString("fname");
                 System.out.println(fname);
-            }else{
+            } else {
                 System.out.println("None");
             }
         } catch (Exception e) {
@@ -192,6 +214,38 @@ public class CommonFunctions extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+
+        try {
+            ResultSet resultrest = MySQL.search("SELECT * FROM `user`");
+
+            while (resultrest.next()) {
+                String fname = resultrest.getString("fname");
+                System.out.println(fname);
+            }
+//            The loop variable count is initialized to 1.
+//            The condition is count <= 5.
+//            As long as count is less than or equal to 5 (which is true initially), the loop keeps running.
+//            Inside the loop, the value of count is printed, and then it's incremented by 1 using count++.
+//            After each iteration, the condition is checked again with the updated value of count.
+//            Once count becomes 6, the condition becomes false, and the loop terminates.
+//            When to use while loops:
+//While loops are useful when you want to execute a block of code a certain number of times that you don't know beforehand,or when a condition needs to be met before the loop stops.
+//They are a versatile tool for repetitive tasks in your Java programs.
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+
+        
+        
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,6 +266,8 @@ public class CommonFunctions extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
