@@ -36,10 +36,11 @@ public class CommonFunctions extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Database Instert");
+        jButton1.setText("Database Instert 1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -60,7 +61,7 @@ public class CommonFunctions extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Database Search");
+        jButton4.setText("Database Search Single Row");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -71,6 +72,13 @@ public class CommonFunctions extends javax.swing.JFrame {
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setText("Database Search  Multiple Rows");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
             }
         });
 
@@ -86,11 +94,13 @@ public class CommonFunctions extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addComponent(jButton2)
                         .addGap(28, 28, 28)
-                        .addComponent(jButton3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton4))
+                        .addComponent(jButton3))
                     .addComponent(jButton5))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton6)
+                    .addComponent(jButton4))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,7 +112,9 @@ public class CommonFunctions extends javax.swing.JFrame {
                     .addComponent(jButton3)
                     .addComponent(jButton4))
                 .addGap(18, 18, 18)
-                .addComponent(jButton5)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5)
+                    .addComponent(jButton6))
                 .addContainerGap(320, Short.MAX_VALUE))
         );
 
@@ -152,12 +164,34 @@ public class CommonFunctions extends javax.swing.JFrame {
 //          JDK 11 -> import java.sql.ResultSet;
             ResultSet resultset = MySQL.search("SELECT * FROM `user`");
             resultset.next();
-            String fname=resultset.getString(2);
+            String fname = resultset.getString(2);
             System.out.println(fname);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+
+        try {
+            // Emply result
+            ResultSet resultset = MySQL.search("SELECT * FROM `user` WHERE `id`='3'");
+            //Error -> Read 1st Row
+            //resultset.next();
+            //String fname=resultset.getString("fnames");
+            //System.out.println(fname);
+            //In case of single data searching by putting resultset.next() is not a good practice! follow below code and do as this !
+            if (resultset.next()) {
+                String fname = resultset.getString("fname");
+                System.out.println(fname);
+            }else{
+                System.out.println("None");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,6 +211,7 @@ public class CommonFunctions extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
