@@ -45,6 +45,9 @@ public class CommonFunctions extends javax.swing.JFrame {
         jButton12 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
+        jButton15 = new javax.swing.JButton();
+        jButton16 = new javax.swing.JButton();
+        jButton17 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -133,8 +136,39 @@ public class CommonFunctions extends javax.swing.JFrame {
         });
 
         jButton13.setText("Database Like Query Search 2");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
 
         jButton14.setText("Database Like Query Search 3");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+
+        jButton15.setText("Database ORDER BY SEARCH");
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
+
+        jButton16.setText("Database Group BY Search");
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
+
+        jButton17.setText("Database Operators Search");
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -144,7 +178,6 @@ public class CommonFunctions extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton5)
-                    .addComponent(jButton8)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -153,19 +186,28 @@ public class CommonFunctions extends javax.swing.JFrame {
                                 .addComponent(jButton2))
                             .addComponent(jButton9))
                         .addGap(28, 28, 28)
+                        .addComponent(jButton3))
+                    .addComponent(jButton10)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton15)
+                            .addComponent(jButton8))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton11)
-                            .addComponent(jButton3)))
-                    .addComponent(jButton10))
-                .addGap(18, 18, 18)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton16)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton17)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton14)
-                    .addComponent(jButton7)
-                    .addComponent(jButton6)
-                    .addComponent(jButton4)
-                    .addComponent(jButton12)
-                    .addComponent(jButton13))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                    .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,11 +225,11 @@ public class CommonFunctions extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton7)
-                    .addComponent(jButton8))
+                    .addComponent(jButton8)
+                    .addComponent(jButton11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton9)
-                    .addComponent(jButton11)
                     .addComponent(jButton12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -195,7 +237,12 @@ public class CommonFunctions extends javax.swing.JFrame {
                     .addComponent(jButton13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton14)
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton17)
+                    .addComponent(jButton16)
+                    .addComponent(jButton15))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -337,9 +384,9 @@ public class CommonFunctions extends javax.swing.JFrame {
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         try {
-            ResultSet resultset = MySQL.search("SELECT * FROM `user` INNER JOIN `user_type` ON `user`.`user_type_id`=`user_type`.`id` WHERE `type`='Admin'");           
+            ResultSet resultset = MySQL.search("SELECT * FROM `user` INNER JOIN `user_type` ON `user`.`user_type_id`=`user_type`.`id` WHERE `type`='Admin'");
             while (resultset.next()) {
-                String fname =resultset.getString("fname");
+                String fname = resultset.getString("fname");
                 System.out.println(fname);
             }
         } catch (Exception e) {
@@ -348,12 +395,89 @@ public class CommonFunctions extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        
+
+        try {
+            ResultSet resultset = MySQL.search("SELECT * FROM `user` WHERE `mobile` LIKE '077%'");
+            //above line if whilecard '%' didn't exsis the search work as the same as reguler ! It's checks first 3 character and after the % symbol rest of the
+            //data does not check as usual !
+            while (resultset.next()) {
+                String fname = resultset.getString("fname");
+                System.out.println(fname);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+
+        try {
+            ResultSet resultset = MySQL.search("SELECT * FROM `user` WHERE `mobile` LIKE '___8%'");
+            //above line if whilecard '%' didn't exsis the search work as the same as reguler ! it does not give what we looking for ! it gives us exact search !
+            while (resultset.next()) {
+                String fname = resultset.getString("fname");
+                System.out.println(fname);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+
+        try {
+            ResultSet resultset = MySQL.search("SELECT * FROM `user` WHERE `mobile` LIKE '%3%'");
+            while (resultset.next()) {
+                String fname = resultset.getString("fname");
+                System.out.println(fname);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        //ASC | DESC
+        try {
+            ResultSet resutlset = MySQL.search("SELECT * FROM `user` ORDER BY `lname` ASC");
+            while (resutlset.next()) {
+                String lname = resutlset.getString("lname");
+                System.out.println(lname);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+
+        //SELECT COUNT (`id`),lname FROM `user` GROUP BY `user_type_id` ->SyntaxException
+        //SELECT COUNT (`id`)FROM `user` GROUP BY `user_type_id`
+        //SELECT COUNT (`id`) AS `user_count` FROM `user` GROUP BY `user_type_id`       
+        try {
+            ResultSet resultset = MySQL.search("SELECT COUNT(`id`) AS `user_count` FROM `user` GROUP BY `user_type_id`");
+            while (resultset.next()) {
+                String user_count = resultset.getString("user_count");
+                System.out.println(user_count);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }//GEN-LAST:event_jButton16ActionPerformed
 
     /**
      * @param args the command line arguments
-     */ 
+     */
     public static void main(String args[]) {
         FlatDarkLaf.setup();
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -370,6 +494,9 @@ public class CommonFunctions extends javax.swing.JFrame {
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
