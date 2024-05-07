@@ -157,6 +157,11 @@ public class CommonFunctions extends javax.swing.JFrame {
         });
 
         jButton16.setText("Database Group BY Search");
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
 
         jButton17.setText("Database Operators Search");
         jButton17.addActionListener(new java.awt.event.ActionListener() {
@@ -438,11 +443,10 @@ public class CommonFunctions extends javax.swing.JFrame {
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         //ASC | DESC
         try {
-               ResultSet resutlset=MySQL.search("SELECT * FROM `user` ORDER BY `lname` ASC");
-               while (resutlset.next()) {
-                   String lname=resutlset.getString("lname");
-                   System.out.println(lname);
-                
+            ResultSet resutlset = MySQL.search("SELECT * FROM `user` ORDER BY `lname` ASC");
+            while (resutlset.next()) {
+                String lname = resutlset.getString("lname");
+                System.out.println(lname);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -453,6 +457,23 @@ public class CommonFunctions extends javax.swing.JFrame {
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+
+        //SELECT COUNT (`id`),lname FROM `user` GROUP BY `user_type_id` ->SyntaxException
+        //SELECT COUNT (`id`)FROM `user` GROUP BY `user_type_id`
+        //SELECT COUNT (`id`) AS `user_count` FROM `user` GROUP BY `user_type_id`       
+        try {
+            ResultSet resultset = MySQL.search("SELECT COUNT(`id`) AS `user_count` FROM `user` GROUP BY `user_type_id`");
+            while (resultset.next()) {
+                String user_count = resultset.getString("user_count");
+                System.out.println(user_count);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }//GEN-LAST:event_jButton16ActionPerformed
 
     /**
      * @param args the command line arguments
