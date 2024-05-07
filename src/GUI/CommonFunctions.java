@@ -133,8 +133,18 @@ public class CommonFunctions extends javax.swing.JFrame {
         });
 
         jButton13.setText("Database Like Query Search 2");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
 
         jButton14.setText("Database Like Query Search 3");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -337,9 +347,9 @@ public class CommonFunctions extends javax.swing.JFrame {
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         try {
-            ResultSet resultset = MySQL.search("SELECT * FROM `user` INNER JOIN `user_type` ON `user`.`user_type_id`=`user_type`.`id` WHERE `type`='Admin'");           
+            ResultSet resultset = MySQL.search("SELECT * FROM `user` INNER JOIN `user_type` ON `user`.`user_type_id`=`user_type`.`id` WHERE `type`='Admin'");
             while (resultset.next()) {
-                String fname =resultset.getString("fname");
+                String fname = resultset.getString("fname");
                 System.out.println(fname);
             }
         } catch (Exception e) {
@@ -348,12 +358,54 @@ public class CommonFunctions extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        
+
+        try {
+            ResultSet resultset = MySQL.search("SELECT * FROM `user` WHERE `mobile` LIKE '077%'");
+            //above line if whilecard '%' didn't exsis the search work as the same as reguler ! It's checks first 3 character and after the % symbol rest of the
+            //data does not check as usual !
+            while (resultset.next()) {
+                String fname = resultset.getString("fname");
+                System.out.println(fname);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+
+        try {
+            ResultSet resultset = MySQL.search("SELECT * FROM `user` WHERE `mobile` LIKE '___8%'");
+            //above line if whilecard '%' didn't exsis the search work as the same as reguler ! it does not give what we looking for ! it gives us exact search !
+            while (resultset.next()) {
+                String fname = resultset.getString("fname");
+                System.out.println(fname);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+
+        try {
+            ResultSet resultset = MySQL.search("SELECT * FROM `user` WHERE `mobile` LIKE '%3%'");
+            while (resultset.next()) {
+                String fname = resultset.getString("fname");
+                System.out.println(fname);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton14ActionPerformed
 
     /**
      * @param args the command line arguments
-     */ 
+     */
     public static void main(String args[]) {
         FlatDarkLaf.setup();
         java.awt.EventQueue.invokeLater(new Runnable() {
