@@ -586,6 +586,7 @@ public class CommonFunctions extends javax.swing.JFrame {
             
             DefaultTableModel modal = (DefaultTableModel) jTable1.getModel();
             modal.setRowCount(0);
+            //to remove exsisting data on the table columns 
             ResultSet resultset = MySQL.search("SELECT * FROM `user`");
             while (resultset.next()) {
                 String id = resultset.getString("id");
