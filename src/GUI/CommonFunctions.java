@@ -7,6 +7,8 @@ package GUI;
 import Modal.MySQL;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.sql.ResultSet;
+import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -48,6 +50,8 @@ public class CommonFunctions extends javax.swing.JFrame {
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
         jButton17 = new javax.swing.JButton();
+        mobileCombo = new javax.swing.JComboBox<>();
+        jButton18 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -170,6 +174,15 @@ public class CommonFunctions extends javax.swing.JFrame {
             }
         });
 
+        mobileCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Number" }));
+
+        jButton18.setText("Load Data");
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -177,36 +190,43 @@ public class CommonFunctions extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(30, 30, 30)
-                                .addComponent(jButton2))
-                            .addComponent(jButton9))
-                        .addGap(28, 28, 28)
-                        .addComponent(jButton3))
-                    .addComponent(jButton10)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton15)
-                            .addComponent(jButton8))
+                        .addComponent(mobileCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
+                        .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton11)
+                            .addComponent(jButton5)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton16)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jButton1)
+                                        .addGap(30, 30, 30)
+                                        .addComponent(jButton2))
+                                    .addComponent(jButton9))
+                                .addGap(28, 28, 28)
+                                .addComponent(jButton3))
+                            .addComponent(jButton10)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton15)
+                                    .addComponent(jButton8))
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton17)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                    .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton11)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jButton16)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jButton17)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                            .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -242,7 +262,11 @@ public class CommonFunctions extends javax.swing.JFrame {
                     .addComponent(jButton17)
                     .addComponent(jButton16)
                     .addComponent(jButton15))
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(mobileCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton18))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -463,12 +487,11 @@ public class CommonFunctions extends javax.swing.JFrame {
         //REMOVE DUPLICATES -> SELECT DISTINCT (`user_type_id`) FROM `user`
         //SUM -> SELECT SUM(`user_type_id`) AS `sum_type_id` FROM `user`
         //AVG -> SELECT AVG(`user_type_id`) AS `avg_type_id` FROM `user`
-        
         try {
-            ResultSet resultset = MySQL.search("SELECT DISTINCT (`user_type_id`) FROM `user`");
+            ResultSet resultset = MySQL.search("SELECT AVG (`user_type_id`) AS `avg_type_id` FROM `user`");
             while (resultset.next()) {
-                String user_type_id = resultset.getString("user_type_id");
-                System.out.println(user_type_id);
+                String avg_type_id = resultset.getString("avg_type_id");
+                System.out.println(avg_type_id);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -481,7 +504,7 @@ public class CommonFunctions extends javax.swing.JFrame {
         //SELECT COUNT (`id`)FROM `user` GROUP BY `user_type_id`
         //SELECT COUNT (`id`) AS `user_count` FROM `user` GROUP BY `user_type_id`       
         try {
-            ResultSet resultset = MySQL.search("SELECT COUNT(`id`) AS `user_count`, `user_type_id` FROM `user` GROUP BY `user_type_id`");
+            ResultSet resultset = MySQL.search("SELECT COUNT(`id`) AS`user_count`, `user_type_id` FROM `user` GROUP BY `user_type_id`");
             while (resultset.next()) {
                 String user_count = resultset.getString("user_count");
                 String user_type = resultset.getString("user_type_id");
@@ -492,6 +515,22 @@ public class CommonFunctions extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton16ActionPerformed
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+
+        try {
+            Vector vector = new Vector();
+            ResultSet resultset = MySQL.search("SELECT `mobile` FROM `user`");
+            while (resultset.next()) {
+                String mobile = resultset.getString("mobile");
+                vector.add(mobile);
+            }
+            DefaultComboBoxModel comboBox = new DefaultComboBoxModel(vector);
+            mobileCombo.setModel(comboBox);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton18ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -515,6 +554,7 @@ public class CommonFunctions extends javax.swing.JFrame {
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -524,5 +564,6 @@ public class CommonFunctions extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> mobileCombo;
     // End of variables declaration//GEN-END:variables
 }
