@@ -455,7 +455,24 @@ public class CommonFunctions extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        // TODO add your handling code here:
+
+        //NOT EQUAL (!= , <>) ->SELECT * FROM `user` WHERE `user_type_id` !='2'
+        //SELECT * FROM `user` WHERE `user_type_id` > '1'
+        //SELECT * FROM `user` WHERE `user_type_id` < '2'
+        //BETWEEN (<= AND =>) -> SELECT * FROM `user` WHERE `user_type_id` BETWEEN '1' AND '3'
+        //REMOVE DUPLICATES -> SELECT DISTINCT (`user_type_id`) FROM `user`
+        //SUM -> SELECT SUM(`user_type_id`) AS `sum_type_id` FROM `user`
+        //AVG -> SELECT AVG(`user_type_id`) AS `avg_type_id` FROM `user`
+        
+        try {
+            ResultSet resultset = MySQL.search("SELECT DISTINCT (`user_type_id`) FROM `user`");
+            while (resultset.next()) {
+                String user_type_id = resultset.getString("user_type_id");
+                System.out.println(user_type_id);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
@@ -464,10 +481,11 @@ public class CommonFunctions extends javax.swing.JFrame {
         //SELECT COUNT (`id`)FROM `user` GROUP BY `user_type_id`
         //SELECT COUNT (`id`) AS `user_count` FROM `user` GROUP BY `user_type_id`       
         try {
-            ResultSet resultset = MySQL.search("SELECT COUNT(`id`) AS `user_count` FROM `user` GROUP BY `user_type_id`");
+            ResultSet resultset = MySQL.search("SELECT COUNT(`id`) AS `user_count`, `user_type_id` FROM `user` GROUP BY `user_type_id`");
             while (resultset.next()) {
                 String user_count = resultset.getString("user_count");
-                System.out.println(user_count);
+                String user_type = resultset.getString("user_type_id");
+                System.out.println("Count=" + user_count + " | Type=" + user_type);
             }
         } catch (Exception e) {
             e.printStackTrace();
