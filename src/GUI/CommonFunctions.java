@@ -480,7 +480,7 @@ public class CommonFunctions extends javax.swing.JFrame {
 
         try {
             ResultSet resultset = MySQL.search("SELECT * FROM `user` WHERE `mobile` LIKE '___8%'");
-            //above line if whilecard '%' didn't exsis the search work as the same as reguler ! it does not give what we looking for ! it gives us exact search !
+            //above line if whilecard '%' didn't exsis the search work as the same as reguler ! _ each of these symbol represents a character.!
             while (resultset.next()) {
                 String fname = resultset.getString("fname");
                 System.out.println(fname);
@@ -502,8 +502,7 @@ public class CommonFunctions extends javax.swing.JFrame {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        // TODO add your handling code here:
+        }     
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
@@ -587,19 +586,20 @@ public class CommonFunctions extends javax.swing.JFrame {
             DefaultTableModel modal = (DefaultTableModel) jTable1.getModel();
             modal.setRowCount(0);
             //to remove exsisting data on the table columns 
+            
             ResultSet resultset = MySQL.search("SELECT * FROM `user`");
             while (resultset.next()) {
                 String id = resultset.getString("id");
                 String fname = resultset.getString("fname");
                 String lname = resultset.getString("lname");
                 String mobile = resultset.getString("mobile");
+                //the way you add to vector , that is the way feeding in to our table! for that order !
                 Vector vector = new Vector();
                 vector.add(id);
                 vector.add(fname);
                 vector.add(lname);
                 vector.add(mobile);
                 modal.addRow(vector);
-
             }
         } catch (Exception e) {
             e.printStackTrace();
