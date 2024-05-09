@@ -681,21 +681,17 @@ public class CommonFunctions extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
         try {
             HashMap<String, Object> map = new HashMap<>();
             String reportPath = "src//Resources//DatabaseTest.jasper";
+            //creating connection!
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/textile_db", "root", "AirbusA330-300");
-            
-            JasperPrint jasperPrint=JasperFillManager.fillReport(reportPath,map,connection);
-            JasperViewer.viewReport(jasperPrint,false);
-            
-            
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/textile_db", "root", "AirbusA330-300");
+            JasperPrint jasperPrint = JasperFillManager.fillReport(reportPath, map, connection);
+            JasperViewer.viewReport(jasperPrint, false);
         } catch (Exception e) {
             e.printStackTrace();
         }
