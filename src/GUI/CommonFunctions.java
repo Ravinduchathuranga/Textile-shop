@@ -655,6 +655,7 @@ public class CommonFunctions extends javax.swing.JFrame {
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
 
         try {
+            //creating hashmap to put data!
             HashMap<String, Object> map = new HashMap<>();
             map.put("id", "1");
             map.put("name", "Ravindu");
