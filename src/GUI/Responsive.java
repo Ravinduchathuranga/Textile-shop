@@ -104,8 +104,8 @@ public class Responsive extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
-        Home home =new Home();
-        this.add(home,BorderLayout.CENTER);
+        Users users =new Users();
+        this.add(users,BorderLayout.CENTER);
         SwingUtilities.updateComponentTreeUI(this);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
