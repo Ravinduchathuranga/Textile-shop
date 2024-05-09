@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JREmptyDataSource;
@@ -272,6 +273,11 @@ public class CommonFunctions extends javax.swing.JFrame {
         });
 
         jButton24.setText("Animate");
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -462,7 +468,7 @@ public class CommonFunctions extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-
+        
         try {
             // Emply result
             ResultSet resultset = MySQL.search("SELECT * FROM `user` WHERE `id`='3'");
@@ -483,10 +489,10 @@ public class CommonFunctions extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-
+        
         try {
             ResultSet resultrest = MySQL.search("SELECT * FROM `user`");
-
+            
             while (resultrest.next()) {
                 String fname = resultrest.getString("fname");
                 System.out.println(fname);
@@ -558,7 +564,7 @@ public class CommonFunctions extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-
+        
         try {
             ResultSet resultset = MySQL.search("SELECT * FROM `user` WHERE `mobile` LIKE '077%'");
             //above line if whilecard '%' didn't exsis the search work as the same as reguler ! It's checks first 3 character and after the % symbol rest of the
@@ -574,7 +580,7 @@ public class CommonFunctions extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-
+        
         try {
             ResultSet resultset = MySQL.search("SELECT * FROM `user` WHERE `mobile` LIKE '___8%'");
             //above line if whilecard '%' didn't exsis the search work as the same as reguler ! _ each of these symbol represents a character.!
@@ -585,12 +591,12 @@ public class CommonFunctions extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        
 
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-
+        
         try {
             ResultSet resultset = MySQL.search("SELECT * FROM `user` WHERE `mobile` LIKE '%3%'");
             while (resultset.next()) {
@@ -655,7 +661,7 @@ public class CommonFunctions extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-
+        
         try {
             Vector vector = new Vector();
             ResultSet resultset = MySQL.search("SELECT `mobile` FROM `user`");
@@ -675,7 +681,7 @@ public class CommonFunctions extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-
+        
         try {
             //Graphically design
             //DefaultTableModel modal=new DefaultTableModel();
@@ -701,12 +707,12 @@ public class CommonFunctions extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        
 
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-
+        
         try {
             //creating hashmap to put data!
             HashMap<String, Object> map = new HashMap<>();
@@ -723,7 +729,7 @@ public class CommonFunctions extends javax.swing.JFrame {
             JasperPrint jasperPrint = JasperFillManager.fillReport(reportPath, map, datasource);
             //to prevent the applocation close 
             JasperViewer.viewReport(jasperPrint, false);
-
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -744,16 +750,16 @@ public class CommonFunctions extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton22ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
-
+        
         try {
-
-            HashMap<String,Object> map=new HashMap<>();
-            String reportPath="src//Resources//TableDataLoading.jasper";
             
+            HashMap<String, Object> map = new HashMap<>();
+            String reportPath = "src//Resources//TableDataLoading.jasper";
+
             //data getting source form jtable!
-            JRDataSource datasource=new JRTableModelDataSource(jTable1.getModel());            
-            JasperPrint jasperPrint=JasperFillManager.fillReport(reportPath,map,datasource);
-            JasperViewer.viewReport(jasperPrint,false);
+            JRDataSource datasource = new JRTableModelDataSource(jTable1.getModel());
+            JasperPrint jasperPrint = JasperFillManager.fillReport(reportPath, map, datasource);
+            JasperViewer.viewReport(jasperPrint, false);
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -765,6 +771,22 @@ public class CommonFunctions extends javax.swing.JFrame {
         //basic values setting process for progressbar!
         jProgressBar1.setValue(80);
     }//GEN-LAST:event_jButton23ActionPerformed
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+        Thread t = new Thread(() -> {
+            for (int i = 0; i <= 100; i++) {
+                jProgressBar1.setValue(i);
+                //the trycatch is essiancial for Thread.sleep
+                try {
+                    Thread.sleep(5);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            JOptionPane.showMessageDialog(this,"Sucess");
+        });
+        t.start();
+    }//GEN-LAST:event_jButton24ActionPerformed
 
     /**
      * @param args the command line arguments
