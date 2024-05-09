@@ -7,6 +7,8 @@ package GUI;
 import Modal.MySQL;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.awt.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -243,6 +245,11 @@ public class CommonFunctions extends javax.swing.JFrame {
         jButton21.setText("Report - Table");
 
         jButton22.setText("Report - Database");
+        jButton22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton22ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -667,9 +674,9 @@ public class CommonFunctions extends javax.swing.JFrame {
             //creating empty data source to use in jaspter report in case we still don't have a datasource!
             JREmptyDataSource datasource = new JREmptyDataSource();
             //creating print object
-            JasperPrint jasperPrint= JasperFillManager.fillReport(reportPath, map, datasource);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(reportPath, map, datasource);
             //to prevent the applocation close 
-            JasperViewer.viewReport(jasperPrint,false);
+            JasperViewer.viewReport(jasperPrint, false);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -677,6 +684,22 @@ public class CommonFunctions extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jButton20ActionPerformed
+
+    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
+        try {
+            HashMap<String, Object> map = new HashMap<>();
+            String reportPath = "src//Resources//DatabaseTest.jasper";
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/textile_db", "root", "AirbusA330-300");
+            
+            JasperPrint jasperPrint=JasperFillManager.fillReport(reportPath,map,connection);
+            JasperViewer.viewReport(jasperPrint,false);
+            
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jButton22ActionPerformed
 
     /**
      * @param args the command line arguments
